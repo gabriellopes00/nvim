@@ -1,11 +1,12 @@
 " Vim Plug
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 Plug 'dracula/vim', { 'as': 'dracula' }             " dracula theme
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} " multi cursors
 Plug 'vim-airline/vim-airline'                      " airline bar
 Plug 'preservim/nerdtree'                           " side bar
-"Plug 'Xuyuanp/nerdtree-git-plugin'                 " side bar git highlight
+Plug 'Xuyuanp/nerdtree-git-plugin'                  " side bar git highlight
+Plug 'airblade/vim-gitgutter'                       " git highlight
 Plug 'tpope/vim-surround'                           " surround a block with some character
 Plug 'jiangmiao/auto-pairs'                         " auto pairs
 Plug 'gko/vim-coloresque'                           " colors code highlighting
@@ -18,7 +19,18 @@ Plug 'junegunn/fzf.vim'                             " fuzzy file finder for vim
 Plug 'airblade/vim-rooter'                          " set project root as working directory
 Plug 'goolord/alpha-nvim'                           " startup screen customizer
 Plug 'neoclide/coc.nvim', {'branch': 'release'}     " vim auto completition
-let g:coc_global_extensions = ['coc-tsserver', 'coc-emmet', 'coc-css', 'coc-html', 'coc-json', 'coc-prettier', 'coc-markdownlint', 'coc-spell-checker', 'coc-yaml', 'coc-go']
+let g:coc_global_extensions = [
+      \ 'coc-tsserver',
+      \ 'coc-emmet',
+      \ 'coc-css',
+      \ 'coc-html',
+      \ 'coc-json',
+      \ 'coc-prettier',
+      \ 'coc-markdownlint',
+      \ 'coc-spell-checker',
+      \ 'coc-yaml',
+      \ 'coc-go',
+      \ 'coc-sumneko-lua']
 
 call plug#end()
 
