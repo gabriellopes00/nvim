@@ -1,0 +1,30 @@
+{
+  "suggest.completionItemKindLabels": {
+    "variable": "",
+    "constant": "",
+    "struct": "",
+    "class": "",
+    "interface": "ﰮ",
+    "text": "",
+    "enum": "",
+    "enumMember": "",
+    "color": "",
+    "property": "",
+    "field": "",
+    "unit": "",
+    "file": "",
+    "value": "",
+    "event": "",
+    "folder": "",
+    "keyword": "",
+    "snippet": "﬌",
+    "operator": "ﬦ",
+    "reference": "",
+    "typeParameter": "",
+    "default": "",
+    "method": "",
+    "function": "",
+    "module": ""
+  },
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "json", "html", "css", "yaml"]
+}
