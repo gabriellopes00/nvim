@@ -1,7 +1,6 @@
-" Vim Plug
+" Vim Plugg
 call plug#begin('~/.config/nvim/plugged')
 
-Plug 'dracula/vim', { 'as': 'dracula' }             " dracula theme
 Plug 'mg979/vim-visual-multi', {'branch': 'master'} " multi cursors
 Plug 'vim-airline/vim-airline'                      " airline bar
 Plug 'preservim/nerdtree'                           " side bar
@@ -9,7 +8,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'                  " side bar git highlight
 Plug 'airblade/vim-gitgutter'                       " git highlight
 Plug 'tpope/vim-surround'                           " surround a block with some character
 Plug 'jiangmiao/auto-pairs'                         " auto pairs
-Plug 'gko/vim-coloresque'                           " colors code highlighting
 Plug 'preservim/nerdcommenter'                      " comments shortcuts
 Plug 'ryanoasis/vim-devicons'                       " pretty icons (requires a nerd-font)
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'      " file icons and color highlighting in NerdTree
@@ -30,6 +28,7 @@ let g:coc_global_extensions = [
       \ 'coc-spell-checker',
       \ 'coc-yaml',
       \ 'coc-go',
+      \ 'coc-snippets',
       \ 'coc-sumneko-lua']
 
 call plug#end()
@@ -39,8 +38,16 @@ luafile $HOME/.config/nvim/config/alpha.lua
 
 " Fuzzy file finder (Fzf)
 let g:fzf_command_prefix = 'Fzf'
-map <C-F> :FzfFiles<CR>
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.8 } }
+let $FZF_DEFAULT_COMMAND='find . \( -name node_modules -o -name .git \) -prune -o -print'
+let g:fzf_action = {
+    \ 'ctrl-j': 'split',
+    \ 'ctrl-l': 'vsplit'
+    \ }
+noremap ff :FzfFiles<CR>
+noremap fl :FzfLines<CR>
+noremap fr :FzfRg<CR>
+noremap fb :FzfBuffers<CR>
 
 " NERDTree
 let NERDTreeWinSize = 50
@@ -62,6 +69,7 @@ let g:airline#extensions#tabline#buffer_nr_show = 1
 
 " vim-coc setup file
 source $HOME/.config/nvim/config/coc.vim
+source $HOME/.config/nvim/config/coc-snippets.vim
 
 let $LANG='en_US'              " english language
 set langmenu=en_US             " menu language
@@ -71,6 +79,14 @@ colorscheme gruvbox
 
 " Key remaps
 noremap <leader>r :source ~/.config/nvim/init.vim<CR>
+
+" Quit quickly
+nnoremap q :q<CR>
+nnoremap x :x<CR>
+
+" Add empty lines
+nnoremap mj o<Esc>k
+nnoremap mk <S-o><Esc>j
 
 " use cntrl + s to save a file instead of lock vim
 " requires zshrc config: alias vim="stty stop '' -ixoff ; vim"
@@ -94,26 +110,13 @@ nnoremap td :tabclose<CR>
 nnoremap to :tabo<CR>
 
 " buffers management
-nnoremap bl :bn<CR>
 nnoremap <Tab> :bn<CR>
-nnoremap bh :bp<CR>
 nnoremap <S-Tab> :bp<CR>
 nnoremap bk :bfirst<CR>
 nnoremap bj :blast<CR>
 nnoremap bn :enew<CR>
 nnoremap bd :bd<cr>
 nnoremap bo :%bd\|e#\|bd#<cr>\|'"
-
-nnoremap <leader>1 :b1<CR>
-nnoremap <leader>2 :b2<CR>
-nnoremap <leader>3 :b3<CR>
-nnoremap <leader>4 :b4<CR>
-nnoremap <leader>5 :b5<CR>
-nnoremap <leader>5 :b5<CR>
-nnoremap <leader>6 :b6<CR>
-nnoremap <leader>7 :b7<CR>
-nnoremap <leader>8 :b8<CR>
-nnoremap <leader>9 :b9<CR>
 
 " move selected code block up or down using Shift + K or J
 xnoremap K :move '<-2<CR>gv-gv
@@ -158,6 +161,8 @@ set ttyfast
 set laststatus=2        " tell VIM to always put a status line in, even if there is only one window
 set number              " set number lines
 set noswapfile          " disable swap files
+set nobackup            " disable backup files
+set nowritebackup       " disable backup files
 set nocompatible        " don't try to be vi compatible
 set hidden              " allow open other file if the current is not saved
 
@@ -172,6 +177,7 @@ set noshiftround        " don't use multiple of shiftwidth when indenting with '
 set autoindent          " always set autoindenting on
 set copyindent          " copy the previous indentation on autoindenting
 set smarttab            " insert tabs on the start of a line according to shiftwidth, not tabstop
+set smartindent
 
 set showmode            " show current mode (visual, insert, normal...)
 set showcmd             " show (partial) command in the last line of the screen this also shows visual selection info
@@ -182,8 +188,8 @@ set matchpairs+=<:>     " match pairs with <>
 set list                " show empty characters, below the characters...
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
-set visualbell          " flash the screen instead of beeping on errors
 set noerrorbells        " don't beep
+set belloff=all         " disable error bells
 
 set encoding=utf-8      " encoding utf-8
 set termencoding=utf-8  " terminal encoding utf-8
