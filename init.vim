@@ -55,7 +55,6 @@ let g:NERDTreeShowHidden = 1
 let g:NERDTreeIgnore = ['^.git$', '^node_modules$']
 
 nnoremap <leader>n :NERDTreeToggle<CR>
-"nnoremap <C-f> :NERDTreeFind<CR>
 
 " Close the tab if NERDTree is the only window remaining in it.
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
@@ -78,11 +77,16 @@ set background=dark
 colorscheme gruvbox
 
 " Key remaps
+
+" reload vim
 noremap <leader>r :source ~/.config/nvim/init.vim<CR>
 
 " Quit quickly
 nnoremap q :q<CR>
 nnoremap x :x<CR>
+
+" GitGutter diff
+nnoremap df :GitGutterDiffOrig<CR>
 
 " Add empty lines
 nnoremap mj o<Esc>k
