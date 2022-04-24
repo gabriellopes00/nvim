@@ -19,7 +19,7 @@ dashboard.section.buttons.val = {
     dashboard.button( "f", "  > Find file"      , ":FzfFiles<CR>"),
     dashboard.button( "r", "  > Recent"         , ":FzfHistory<CR>"),
     dashboard.button( "s", "  > Settings"       , ":e $HOME/.config/nvim/init.vim<CR>"),
-    dashboard.button( "u", "  > Sync Plugins" , ":PlugUpdate | :PlugUpgrade<CR>"),
+    dashboard.button( "u", "  > Sync Plugins"   , ":PlugClean | :PlugUpdate | :PlugUpgrade<CR>"),
     dashboard.button( "q", "  > Quit NVIM"      , ":qa<CR>"),
 }
 
