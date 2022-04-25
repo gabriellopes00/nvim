@@ -84,6 +84,7 @@ noremap <leader>r :source ~/.config/nvim/init.vim<CR>
 " Quit quickly
 nnoremap q :q<CR>
 nnoremap x :x<CR>
+nnoremap w :w<CR>
 
 " GitGutter diff
 nnoremap df :GitGutterDiffOrig<CR>
@@ -91,12 +92,6 @@ nnoremap df :GitGutterDiffOrig<CR>
 " Add empty lines
 nnoremap mj o<Esc>k
 nnoremap mk <S-o><Esc>j
-
-" use cntrl + s to save a file instead of lock vim
-" requires zshrc config: alias vim="stty stop '' -ixoff ; vim"
-nnoremap <silent><c-s> :<c-u>update<cr>
-vnoremap <silent><c-s> <c-c>:update<cr>gv
-inoremap <silent><c-s> <c-o>:update<cr>
 
 " navigate between screens using Cntrl + h j k or l
 nnoremap <C-h> <C-W>h
@@ -141,9 +136,6 @@ vnoremap <leader>; :call nerdcommenter#Comment(0,"toggle")<CR>
 " split screen using <leader> + h or v
 nnoremap <leader>h :split<Space>
 nnoremap <leader>v :vsplit<Space>
-
-" close vim without
-nnoremap<leader>q :q<CR>
 
 " filetype settings
 filetype off                " disable file type detection
